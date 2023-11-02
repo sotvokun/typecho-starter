@@ -37,10 +37,10 @@ docker-compose up -d
 ```
 server {
         listen 80;
-        server_name svdu.me;
+        server_name <YOUR_SITE_URL>;
 
         location / {
-                proxy_pass http://127.0.0.1:35001;
+                proxy_pass http://127.0.0.1:<PORT_YOUR_EXPORTED>;
 
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
@@ -48,3 +48,4 @@ server {
         }
 }
 ```
+请注意，其中 <YOUR_SITE_URL> 中的域名，请不要携带任何的协议和端口号。 <PORT_YOUR_EXPORTED> 中的端口号，为你在 `docker-compose.yml` 中所定义的导出端口号。
